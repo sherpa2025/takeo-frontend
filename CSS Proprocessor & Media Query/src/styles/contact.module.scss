@@ -1,0 +1,11 @@
+@use 'fonts' as font;  // using the use directive for partial file 
+// assigning an alias as font for the _fonts file
+@import 'colors'; // import the variables from the partial file
+
+.container{
+    color: $black;
+    font-family: font.$font-type2;
+    margin: 0% 40%;
+    font-size: 30px;
+
+}

@@ -1,0 +1,70 @@
+/* SCSS Rule */
+
+@use 'fonts' as font;  // using the use directive for partial file 
+// assigning an alias as font for the _fonts file
+@import 'colors'; // import the variables from the partial file
+
+// use of variables
+.container {
+    background-color: $color1;
+    color: $white;
+    font-family: font.$arial;
+    margin: 0% 35%;
+    display: inline;
+}
+
+// nesting
+
+  .info {
+    background-color: $color5;
+    color: $black;
+    font-size: 20px;
+  
+  a:hover {
+    background-color: $color3;
+  }
+}
+// inheritance
+.container1{
+    @extend .container;
+    color: $black;
+}
+
+// use of mixins
+@mixin change($color){
+    background-color: $color;
+    
+}
+
+.task1{
+    @include change($color1);
+}
+
+.task2{
+    @include change($color3);
+}
+
+.task3{
+    @include change($color5);
+}
+
+
+@media all and (max-width:900px){
+    .container {
+        background-color: $color5;
+        color: $black;
+        font-family: font.$font-type2;
+    }
+}
+
+@media print{
+    .container{
+        background-color: $color3;
+    }
+}
+
+@media (orientation: landscape), (max-width:400px){
+    container{
+        background-color: $color3;
+    }
+}
