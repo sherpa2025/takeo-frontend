@@ -1,6 +1,4 @@
-.container1{
-  margin: 0;
-}
+
 .todo-nav {
   display: flex;
   justify-content: center;
@@ -30,6 +28,14 @@ hr{
   opacity: 0.5;
 }
 
+.todo-header{
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+}
+
 .table{
   border: 7px solid;
 }
+
+
