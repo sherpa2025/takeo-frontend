@@ -1,26 +1,35 @@
-
-.navbar .nav-link {
+.container1{
+  margin: 0;
+}
+.todo-nav {
+  display: flex;
+  justify-content: center;
+}
+.nav-link {
   text-decoration: none;
   color: inherit; 
 }
 
-.navbar .nav-header{
+.navbar-header{
   display: flex;
+  justify-content: center;
   font-family: "Bebas Neue", sans-serif;
   font-size: 60px;
   color: black;
-  justify-content: center;
   letter-spacing: 2px;
-  margin: 5px 0 5px 0;
+  margin: 20px 0 0 0;
 }
 
-.navbar .line {
+.line {
   margin: 0% 35%;
 }
 
-.navbar hr{
+hr{
   height: 4px;
   background-color: #1B3C73;
   opacity: 0.5;
 }
 
+.table{
+  border: 7px solid;
+}
