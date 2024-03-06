@@ -29,11 +29,30 @@ hr{
 }
 
 .todo-header{
-  display: flex;
-  justify-content: space-between;
-  height: 60px;
+  margin-bottom: 30px;
 }
 
+.form {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  padding: 0 5px;
+  border: 2px black solid;
+  border-radius: 10px;
+}
+
+.innerForm{
+  margin: 10px;
+}
+
+.innerForm.title{
+  width: 40%;
+}
+
+.btn.btn-success.b1{
+  margin-top: 10px;
+  height: 20%;
+}
 .table{
   border: 7px solid;
 }

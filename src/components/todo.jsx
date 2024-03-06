@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Table, Button } from "react-bootstrap";
-import TodoForm from "./addTodo";
+import AddForm from "./add";
+import UpdateForm from "./update"; // Assuming you have an UpdateForm component
 
 function TodoList() {
   const [selectedTodos, setSelectedTodos] = useState([]);
-  const [showForm, setShowForm] = useState(false);
+  const [todos, setTodos] = useState([]);
+  const [selectedTodo, setSelectedTodo] = useState(null); // State to manage selected todo for update
 
-  const [todos, setTodos] = useState([
-    { id: 1, title: "Learn Backend w/ Java", status: "Completed" },
-    // Add more todos as needed
-  ]);
+  const handleSubmit = (newTodo) => {
+    setTodos([...todos, newTodo]);
+  };
 
   function handleTodoSelection(todo) {
     const isSelected = selectedTodos.includes(todo.id);
@@ -20,33 +21,28 @@ function TodoList() {
     }
   }
 
-  function handleAddTodo(newTodo) {
-    setTodos([...todos, newTodo]); // Add the new todo to the list
-  }
-
   function handleDeleteTodos() {
     const updatedTodos = todos.filter(
       (todo) => !selectedTodos.includes(todo.id)
     );
     setTodos(updatedTodos);
-    setSelectedTodos([]); // Clear selectedTodos after deletion
+    setSelectedTodos([]);
+  }
+
+  function handleUpdateTodo() {
+    // Find the selected todo for update
+    const todoToUpdate = todos.find((todo) => todo.id === selectedTodos[0]);
+    if (todoToUpdate) {
+      setSelectedTodo(todoToUpdate); // Set selected todo for update
+    }
   }
 
   return (
     <div className="container">
-      <div className="todo-header">
-        <h2>Todo List with Bootstrap!</h2>
-        {!showForm && (
-          <Button
-            className="btn btn-success m-2"
-            onClick={() => setShowForm(true)}
-          >
-            Add New Todo
-          </Button>
-        )}
-        {showForm && (
-          <TodoForm onAddTodo={handleAddTodo} setShowForm={setShowForm} />
-        )}
+      <h2 className="todo-header">Todo List with Bootstrap!</h2>
+      <div>
+        <AddForm onSubmit={handleSubmit} />
+        {selectedTodo && <UpdateForm todo={selectedTodo} />}
       </div>
 
       <div>
@@ -78,8 +74,11 @@ function TodoList() {
         </Table>
       </div>
       <div>
-        <Button className="btn btn-warning m-2" onClick={handleDeleteTodos}>
+        <Button className="btn btn-danger m-2" onClick={handleDeleteTodos}>
           Delete Todo
+        </Button>
+        <Button className="btn btn-warning m-2" onClick={handleUpdateTodo}>
+          Update Todo
         </Button>
       </div>
     </div>
