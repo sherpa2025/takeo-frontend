@@ -4,7 +4,7 @@
     flex-wrap: wrap;
   }
   
-  .country {
+  .box {
     flex: calc(25% - 10px); 
     text-align: center; 
     border: 1px black solid;
@@ -12,7 +12,7 @@
     margin:3px 3px;
   }
   .flag {
-    width: 75%px; 
+    width: 75%; 
     height: 140px; 
     margin-top: 10px;
   }

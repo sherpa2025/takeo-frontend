@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <div className="topnav">
       <div>
-        <Link to="/">
+        <Link to="/" className="nav-link">
           <img src={world} className="nav-img" />
         </Link>
       </div>

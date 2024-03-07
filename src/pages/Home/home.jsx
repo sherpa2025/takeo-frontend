@@ -26,7 +26,7 @@ function Home() {
   return (
     <div className="container">
       {countries.map((country) => (
-        <div key={country.name.common} className="country">
+        <div key={country.name.common} className="box">
           <div>
             <img
               className="flag"
