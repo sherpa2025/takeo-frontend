@@ -9,10 +9,10 @@ function Home() {
         const res = await fetch("https://restcountries.com/v3.1/all");
         const data = await res.json();
 
-        if (data.success) {
+        if (res.ok) {
           setCountries(data);
         } else {
-          throw new Error("Failed to fetch countries from the ");
+          throw new Error("Failed to fetch countries from the URL");
         }
       } catch (error) {
         console.error("Error fetching the countries ", error);
