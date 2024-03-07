@@ -21,4 +21,4 @@ This is a simple web application that displays information about different count
 
 ## Video Demo
 
-[Watch Demo Video](./src/demo/complete.mp4)
+![Watch Demo Video](./src/demo/complete.mp4)
