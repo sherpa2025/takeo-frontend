@@ -1,8 +1,9 @@
-# React + Vite
+# Country details fetched from URL & shown with two different pages
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Home page for all country (show country flag and name of the country)
 
-Currently, two official plugins are available:
+fetch URL for home page --> https://restcountries.com/v3.1/all
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Detail page for each country (display more information)
+
+fetch URL for detail page --> https://restcountries.com/v3.1/name/{countryName}
