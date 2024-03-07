@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./home.css";
 
 function Home() {
   const [countries, setCountries] = useState([]);
@@ -23,21 +24,19 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      <h1>Country List</h1>
-      <ul>
-        {countries.map((country) => (
-          <li key={country.name.common}>
+    <div className="container">
+      {countries.map((country) => (
+        <div key={country.name.common} className="country">
+          <div>
             <img
+              className="flag"
               src={country.flags.svg}
               alt={country.name.common}
-              width="30"
-              height="20"
             />
-            {country.name.common}
-          </li>
-        ))}
-      </ul>
+          </div>
+          <div className="name">{country.name.common}</div>
+        </div>
+      ))}
     </div>
   );
 }
