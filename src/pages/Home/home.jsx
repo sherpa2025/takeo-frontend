@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import "./home.css";
+import { Link } from "react-router-dom";
+import Navbar from "../../components/navbar/navbar";
 
 function Home() {
   const [countries, setCountries] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getCountries = async () => {
@@ -23,20 +26,36 @@ function Home() {
     getCountries();
   }, []);
 
+  // Update the search query state
+  const handleSearch = (query) => {
+    setSearchQuery(query.toLowerCase());
+  };
+
   return (
-    <div className="container">
-      {countries.map((country) => (
-        <div key={country.name.common} className="box">
-          <div>
-            <img
-              className="flag"
-              src={country.flags.svg}
-              alt={country.name.common}
-            />
-          </div>
-          <div className="name">{country.name.common}</div>
-        </div>
-      ))}
+    <div>
+      {/* Render the Navbar component and pass handleSearch as a prop */}
+      <Navbar onSearch={handleSearch} />
+
+      <div className="container">
+        {countries
+          // filtering the search with {country.name.common}
+          .filter((country) =>
+            country.name.common.toLowerCase().includes(searchQuery)
+          )
+          .map((country) => (
+            <div key={country.name.common} className="box">
+              {/* Link to detail page */}
+              <Link to={`/details/${country.name.common}`}>
+                <img
+                  className="flag"
+                  src={country.flags.svg}
+                  alt={country.name.common}
+                />
+              </Link>
+              <div className="name">{country.name.common}</div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import style from "./details.module.css";
+import Navbar from "../../components/navbar/navbar";
 function Details() {
   const { name } = useParams();
   const baseDetailUrl = "https://restcountries.com/v3.1/name/";
@@ -32,41 +33,44 @@ function Details() {
   }, [name]);
 
   return (
-    <div className={style.container}>
-      {details.map((country) => (
-        <div key={country.name.common}>
-          <div className={style.box}>
-            <div>
-              <img
-                className={style.flag}
-                src={country.flags.svg}
-                alt={country.name.common}
-              />
-            </div>
-            <div className={style.content}>
-              <h1>{country.name.common}</h1>
-              <p>Capital: {country.capital}</p>
-              <p>Continent: {country.continents}</p>
-              Currencies:
-              <ul>
-                {Object.entries(country.currencies).map(
-                  ([code, { name, symbol }]) => (
-                    <li key={code}>
-                      {name} ({symbol})
-                    </li>
-                  )
-                )}
-              </ul>
-              Languages:
-              <ul>
-                {Object.entries(country.languages).map(([code, name]) => (
-                  <li key={code}>{name}</li>
-                ))}
-              </ul>
+    <div>
+      <Navbar />
+      <div className={style.container}>
+        {details.map((country) => (
+          <div key={country.name.common}>
+            <div className={style.box}>
+              <div>
+                <img
+                  className={style.flag}
+                  src={country.flags.svg}
+                  alt={country.name.common}
+                />
+              </div>
+              <div className={style.content}>
+                <h1>{country.name.common}</h1>
+                <p>Capital: {country.capital}</p>
+                <p></p>
+                Currencies:
+                <ul>
+                  {Object.entries(country.currencies).map(
+                    ([code, { name, symbol }]) => (
+                      <li key={code}>
+                        {name} ({symbol})
+                      </li>
+                    )
+                  )}
+                </ul>
+                Languages:
+                <ul>
+                  {Object.entries(country.languages).map(([code, name]) => (
+                    <li key={code}>{name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
